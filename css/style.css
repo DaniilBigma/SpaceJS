@@ -1,0 +1,45 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: black !important;
+}
+
+#main {
+    max-width: 980px;
+    margin: 0 auto;
+}
+
+.container {
+    margin: 30px;
+}
+
+.newBall {
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+    border: 1px solid rgb(4, 177, 207);
+    display: inline-block;
+    position: absolute;
+    animation: dead;
+    animation-duration: 2s;
+}
+
+#red {
+    animation-duration: 4s;
+    border: 1px solid red;
+}
+
+@keyframes dead {
+    from {
+        height: 40px;
+        width: 40px;
+    }
+
+    to {
+        height: 0px;
+        width: 0px;
+    }
+}
