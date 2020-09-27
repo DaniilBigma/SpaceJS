@@ -5,6 +5,11 @@ console.log("Width: "+WIDTH+"px, " + "Height: "+HEIGHT+"px");
 var mainElement = document.getElementById("main");
 var timer;
 
+document.getElementById("starteffect").addEventListener("click", disalbeButtonStart);
+document.getElementById("stopeffect").addEventListener("click", enableButtonStart);
+
+var ballLength = 0;
+
 var startTimer = function () {
     timer = setInterval(function () {
         startEffect();
@@ -24,11 +29,12 @@ var elementStyle = function (element) {
         element.style.width = i--;
         element.style.height = j--;
     }, 1000);
+    console.log(deadElement);
 };
 
 function startEffect() {
     var newElement = document.createElement("div");
-    var ballLength = document.getElementsByClassName("newBall").length;
+    ballLength = document.getElementsByClassName("newBall").length;
     if (ballLength % 2) {
         newElement.setAttribute("id", "red");
     } else if (ballLength % 3) {
@@ -37,6 +43,7 @@ function startEffect() {
     newElement.setAttribute("class", "newBall");
     elementStyle(newElement);
     mainElement.appendChild(newElement);
+    document.getElementById("countBalls").innerHTML = ballLength;
 }
 
 function disalbeButtonStart() {
@@ -47,6 +54,7 @@ function disalbeButtonStart() {
 function enableButtonStart() {
     let buttonStart = document.getElementById("starteffect");
     buttonStart.disabled = false;
+    document.getElementById("countBalls").innerHTML = ballLength + 1;
 }
 
 function removeAllElements() {
@@ -55,4 +63,5 @@ function removeAllElements() {
         mainElement.removeChild(ballElements[i]);
     }
     console.log("Has been removed " + ballElements.length + " elements");
+    document.getElementById("countBalls").innerHTML = 0;
 }
