@@ -49,16 +49,32 @@ function startEffect() {
 function disalbeButtonStart() {
     let buttonStart = document.getElementById("starteffect");
     buttonStart.disabled = true;
+    enableButtonStop();
+}
+
+function disalbeButtonStop() {
+    let buttonStart = document.getElementById("stopeffect");
+    buttonStart.disabled = true;
 }
 
 function enableButtonStart() {
     let buttonStart = document.getElementById("starteffect");
     buttonStart.disabled = false;
     document.getElementById("countBalls").innerHTML = ballLength + 1;
+    disalbeButtonStop();
+}
+
+function enableButtonStop() {
+    let buttonStart = document.getElementById("stopeffect");
+    buttonStart.disabled = false;
 }
 
 function removeAllElements() {
     var ballElements = document.querySelectorAll(".newBall");
+
+    enableButtonStart();
+    enableButtonStop();
+
     for (var i = 0; i < ballElements.length; i++) {
         mainElement.removeChild(ballElements[i]);
     }
